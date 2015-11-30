@@ -19,6 +19,7 @@ namespace WinComment
         public Form1()
         {
             InitializeComponent();
+            txtUrl.Text = "http://news.163.com/15/1130/00/B9KLSTC800014JB6.html";
         }
 
         private void btnGet_Click(object sender, EventArgs e)
@@ -28,8 +29,11 @@ namespace WinComment
             string cmtUrl = CreateCmtURL(para);
             string cmtHtml = GetHtmlByGet(cmtUrl);
             string html = OperationHTML(cmtHtml);
+            txtCmt.Text = html;
             DataTable dt = OperationJson(html);
+            lblTotal.Text = GetTotal(html).ToString();
             GVCmt.DataSource = dt;
+            lblGet.Text = dt.Rows.Count.ToString();
             //NewPost post = JsonConvert.DeserializeObject<NewPost>();
         }
         private string GetHtmlByGet(string url)
@@ -83,11 +87,17 @@ namespace WinComment
         private string OperationHTML(string html)
         {
             string str = html.Substring(16, html.Length - 18);//为毛是18不是17 ??
+            //string behind = "\"details\"";
+            //string front = "\"1\"";
+            //string behind = @"""details""";
+            //string front = @"""1""";
+            //str = str.Replace(front,behind);
             return str;
         }
 
         private void SelectAll_Click(object sender, EventArgs e)
         {
+            txtCmt.Focus();//必须设置焦点
             txtCmt.SelectAll();
         }
 
@@ -95,24 +105,48 @@ namespace WinComment
         private DataTable OperationJson(string html)
         {
             DataTable dt = new DataTable();
-            dt.Columns.Add("time", typeof(string));
+            dt.Columns.Add("time", typeof(DateTime));
             dt.Columns.Add("account", typeof(string));
             JObject jo = (JObject)JsonConvert.DeserializeObject(html);
             JArray ja = JArray.Parse(jo["newPosts"].ToString());
             for (int i = 0; i < ja.Count;i++ )
             {
                 JObject job = JObject.Parse(ja[i].ToString());
-                JArray jar = JArray.Parse(job["1"].ToString());
-                for(int k=0;k<jar.Count;k++)
+                //JArray jar = JArray.Parse(job["details"].ToString());
+
+                JObject job2 = JObject.Parse(job["1"].ToString());
+
+                int j = 2;
+                while(job[""+j+""]!=null)
                 {
-                    JObject jk = JObject.Parse(jar[k].ToString());
-                    DataRow dr = dt.NewRow();
-                    dr["time"] = jk["t"].ToString();
-                    dr["account"] = jk["n"].ToString();
-                    dt.Rows.Add(dr);
+                    job2 = JObject.Parse(job[""+j+""].ToString());
+                    j++;
                 }
+
+                DataRow dr = dt.NewRow();
+                dr["account"] = job2["b"].ToString();
+                dr["time"] = Convert.ToDateTime(job2["t"]);
+                
+                dt.Rows.Add(dr);
             }
             return dt;
+        }
+
+        private string JudgeTable(DataTable dt)
+        {
+            string strEsg = string.Empty;
+
+            string strNew = dt.Rows[0]["time"].ToString();
+
+
+
+            return strEsg;
+        }
+
+        private int GetTotal(string strHtml)
+        {
+            Regex regex = new Regex(@"(?<=""tcount"":)\d{1,5}");
+            return Convert.ToInt32(regex.Match(strHtml).Value);
         }
     }
 }
