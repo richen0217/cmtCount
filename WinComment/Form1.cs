@@ -34,6 +34,9 @@ namespace WinComment
             lblTotal.Text = GetTotal(html).ToString();
             GVCmt.DataSource = dt;
             lblGet.Text = dt.Rows.Count.ToString();
+            lblTod.Text = GetTodayCmt(dt).ToString();
+            lblYes.Text = GetYesterdayCmt(dt).ToString();
+            lblBef.Text = GetBeforeCmt(dt).ToString();
             //NewPost post = JsonConvert.DeserializeObject<NewPost>();
         }
         private string GetHtmlByGet(string url)
@@ -136,13 +139,47 @@ namespace WinComment
         {
             string strEsg = string.Empty;
 
-            string strNew = dt.Rows[0]["time"].ToString();
+            //string strNew = dt.Rows[0]["time"].ToString();
 
+            //var query=from cmt in dt.AsEnumerable()
+            int total = dt.Rows.Count;
+            int countTod = GetTodayCmt(dt);
+            int countYes = 0;
+            int countBef = 0;
 
+            if (total <= 8)
+            {
+                strEsg = "条数过少，不予判断";
+            }
+            else
+            {
+                if (countTod >= total)
+                {
+                    strEsg = "正常";
+                }
 
+                if (countTod < 31)
+                {
+
+                }
+            }
             return strEsg;
         }
 
+        private int GetTodayCmt(DataTable dt)
+        {
+            return dt.AsEnumerable().Where(item => item.Field<DateTime>("time") >= DateTime.Now.Date).Count();
+        }
+
+        private int GetYesterdayCmt(DataTable dt)
+        {
+            return dt.AsEnumerable().Where(item => item.Field<DateTime>("time") >= DateTime.Now.AddDays(-1) && item.Field<DateTime>("time") < DateTime.Now.Date).Count();
+        }
+
+        private int GetBeforeCmt(DataTable dt)
+        {
+            return dt.AsEnumerable().Where(item => item.Field<DateTime>("time") >= DateTime.Now.AddDays(-2) && item.Field<DateTime>("time") <= DateTime.Now.AddDays(-1)).Count();
+        }
         private int GetTotal(string strHtml)
         {
             Regex regex = new Regex(@"(?<=""tcount"":)\d{1,5}");

@@ -10,4 +10,10 @@ namespace WinComment
         public string boardID { get; set; }
         public string threadID { get; set; }
     }
+
+    public class ParaSina
+    {
+        public string channel { get; set; }
+        public string newsid { get; set; }
+    }
 }
