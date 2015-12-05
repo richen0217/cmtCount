@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WinComment
 {
-    public class CmtParaSina
+    public class CmtJsonSina
     {
         public Result result { get; set; }
 

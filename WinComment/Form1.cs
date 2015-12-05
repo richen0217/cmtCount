@@ -25,7 +25,7 @@ namespace WinComment
         private void btnGet_Click(object sender, EventArgs e)
         {
             string strUrl = txtUrl.Text.Trim();
-            ParaCmt para = GetCommetPara(strUrl);
+            Para163 para = GetCommetPara(strUrl);
             string cmtUrl = CreateCmtURL(para);
             string cmtHtml = GetHtmlByGet(cmtUrl);
             string html = OperationHTML(cmtHtml);
@@ -73,16 +73,16 @@ namespace WinComment
             return htmlString;
         }
 
-        private ParaCmt GetCommetPara(string url)
+        private Para163 GetCommetPara(string url)
         {
             string html = GetHtmlByGet(url);
-            ParaCmt para = new ParaCmt();
+            Para163 para = new Para163();
             para.boardID = Regex.Match(html, @"(?<=boardId\s+=\s+\"").*(?=\"")").ToString();
             para.threadID = Regex.Match(html, @"(?<=threadId\s+=\s+\"").*(?=\"")").ToString();
             return para;
         }
 
-        private string CreateCmtURL(ParaCmt para)
+        private string CreateCmtURL(Para163 para)
         {
             return @"http://comment.news.163.com/cache/newlist/" + para.boardID + "/" + para.threadID + "_1.html";
         }

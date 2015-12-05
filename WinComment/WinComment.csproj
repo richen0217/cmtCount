@@ -48,20 +48,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CmtParaSina.cs" />
-    <Compile Include="FengHuang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FengHuang.Designer.cs">
-      <DependentUpon>FengHuang.cs</DependentUpon>
-    </Compile>
+    <Compile Include="CmtJsonSohu.cs" />
+    <Compile Include="CmtJsonSina.cs" />
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="iFengPara.cs" />
+    <Compile Include="OperaTimeStamp.cs" />
+    <Compile Include="FengHuang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FengHuang.Designer.cs">
+      <DependentUpon>FengHuang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSina.Designer.cs">
+      <DependentUpon>FormSina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormSohu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSohu.Designer.cs">
+      <DependentUpon>FormSohu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CmtJsoniFeng.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,7 +84,6 @@
     </Compile>
     <Compile Include="GetJson.cs" />
     <Compile Include="ParaCmt.cs" />
-    <Compile Include="ParaJson.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FengHuang.resx">
@@ -81,6 +94,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSina.resx">
+      <DependentUpon>FormSina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSohu.resx">
+      <DependentUpon>FormSohu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
