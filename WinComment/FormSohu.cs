@@ -28,7 +28,10 @@ namespace WinComment
             ParaSohu sohu = GetJson.GetParaSohu(url);
             string html = GetJson.GetSohuJson(sohu);
             string json = GetJson.DealSohuHtml(html);
-            DataTable dt = GetJson.OperaSohuJson(json);
+            int count=0;
+            DataSet ds = GetJson.OperaSohuJson(json,out count);
+            DataTable dt = new DataTable();
+            dt=ds.Tables["hot"];
             txtNew.Text = GetJson.CreateSohuJsonUrl(sohu);
             GVSohu.DataSource = dt;
             txtCmt.Text = json;

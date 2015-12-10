@@ -27,16 +27,20 @@ namespace WinComment
             string strUrl = txtUrl.Text.Trim();
             Para163 para = GetCommetPara(strUrl);
             string cmtUrl = CreateCmtURL(para);
+            //string cmtUrl = Create163HotUrl(para);
             string cmtHtml = GetHtmlByGet(cmtUrl);
-            string html = OperationHTML(cmtHtml);
+            //string html = OperationHTML(cmtHtml);
+            string html = GetJson.Deal163CountHtml(cmtHtml);
+            html = GetJson.Get163CmtTotal(html).ToString();
             txtCmt.Text = html;
-            DataTable dt = OperationJson(html);
-            lblTotal.Text = GetTotal(html).ToString();
-            GVCmt.DataSource = dt;
-            lblGet.Text = dt.Rows.Count.ToString();
-            lblTod.Text = GetTodayCmt(dt).ToString();
-            lblYes.Text = GetYesterdayCmt(dt).ToString();
-            lblBef.Text = GetBeforeCmt(dt).ToString();
+            //lblHot.Text = GetJson.Get163HotCount(html).ToString();
+            //DataTable dt = OperationJson(html);
+            //lblTotal.Text = GetTotal(html).ToString();
+            //GVCmt.DataSource = dt;
+            //lblGet.Text = dt.Rows.Count.ToString();
+            //lblTod.Text = GetTodayCmt(dt).ToString();
+            //lblYes.Text = GetYesterdayCmt(dt).ToString();
+            //lblBef.Text = GetBeforeCmt(dt).ToString();
             //NewPost post = JsonConvert.DeserializeObject<NewPost>();
         }
         private string GetHtmlByGet(string url)
@@ -84,9 +88,13 @@ namespace WinComment
 
         private string CreateCmtURL(Para163 para)
         {
-            return @"http://comment.news.163.com/cache/newlist/" + para.boardID + "/" + para.threadID + "_1.html";
+            return @"http://comment.news.163.com/cache/newlist/" + para.boardID + "/" + para.threadID + "_0.html";
         }
 
+        private string Create163HotUrl(Para163 para)
+        {
+            return @"http://comment.news.163.com/data/" + para.boardID + "/df/" + para.threadID + "_1.html";
+        }
         private string OperationHTML(string html)
         {
             string str = html.Substring(16, html.Length - 18);//为毛是18不是17 ??
@@ -98,6 +106,16 @@ namespace WinComment
             return str;
         }
 
+        private string OperationHotHTML(string html)
+        {
+            string str = html.Substring(14, html.Length - 15);//为毛是18不是17 ??
+            //string behind = "\"details\"";
+            //string front = "\"1\"";
+            //string behind = @"""details""";
+            //string front = @"""1""";
+            //str = str.Replace(front,behind);
+            return str;
+        }
         private void SelectAll_Click(object sender, EventArgs e)
         {
             txtCmt.Focus();//必须设置焦点
@@ -144,8 +162,8 @@ namespace WinComment
             //var query=from cmt in dt.AsEnumerable()
             int total = dt.Rows.Count;
             int countTod = GetTodayCmt(dt);
-            int countYes = 0;
-            int countBef = 0;
+            //int countYes = 0;
+            //int countBef = 0;
 
             if (total <= 8)
             {

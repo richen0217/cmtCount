@@ -29,6 +29,7 @@ namespace WinComment
             string json2 = GetJson.GetSinaJson(cmtUrl);
             //DataTable dt = GetJson.OperaSinaJson(json);
             txtJson2.Text = json2;
+            //DataSet ds = GetJson.OperaSinaJson(json);
         }
 
         private void btnSel_Click(object sender, EventArgs e)

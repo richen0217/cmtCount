@@ -32,11 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EnAndDe">
+      <HintPath>bin\Release\EnAndDe.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CmtJsonQQ.cs" />
     <Compile Include="CmtJsonSohu.cs" />
     <Compile Include="CmtJsonSina.cs" />
     <Compile Include="FormMain.cs">
@@ -55,6 +60,12 @@
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormQQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormQQ.Designer.cs">
+      <DependentUpon>FormQQ.cs</DependentUpon>
     </Compile>
     <Compile Include="OperaTimeStamp.cs" />
     <Compile Include="FengHuang.cs">
@@ -86,6 +97,7 @@
     <Compile Include="ParaCmt.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlHelper.cs" />
     <EmbeddedResource Include="FengHuang.resx">
       <DependentUpon>FengHuang.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormQQ.resx">
+      <DependentUpon>FormQQ.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSina.resx">
       <DependentUpon>FormSina.cs</DependentUpon>
@@ -110,6 +125,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="App.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

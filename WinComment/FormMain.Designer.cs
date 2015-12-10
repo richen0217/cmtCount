@@ -33,6 +33,8 @@
             this.rbCmt = new System.Windows.Forms.RadioButton();
             this.rbHot = new System.Windows.Forms.RadioButton();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnGet = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -81,11 +83,33 @@
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 4;
             // 
+            // btnGet
+            // 
+            this.btnGet.Location = new System.Drawing.Point(664, 23);
+            this.btnGet.Name = "btnGet";
+            this.btnGet.Size = new System.Drawing.Size(75, 51);
+            this.btnGet.TabIndex = 5;
+            this.btnGet.Text = "获取";
+            this.btnGet.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.Location = new System.Drawing.Point(48, 88);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(532, 296);
+            this.textBox2.TabIndex = 6;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 387);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.btnGet);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.rbHot);
             this.Controls.Add(this.rbCmt);
@@ -105,5 +129,7 @@
         private System.Windows.Forms.RadioButton rbCmt;
         private System.Windows.Forms.RadioButton rbHot;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnGet;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

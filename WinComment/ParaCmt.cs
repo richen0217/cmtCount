@@ -25,4 +25,11 @@ namespace WinComment
     {
         public string newsid { get; set; }
     }
+
+    public class CmtCount
+    {
+        public int today { get; set; }
+        public int yest { get; set; }
+        public int befor { get; set; }
+    }
 }

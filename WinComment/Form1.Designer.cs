@@ -42,7 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.lblNew = new System.Windows.Forms.Label();
+            this.lblHot = new System.Windows.Forms.Label();
             this.lblTod = new System.Windows.Forms.Label();
             this.lblYes = new System.Windows.Forms.Label();
             this.lblBef = new System.Windows.Forms.Label();
@@ -154,9 +154,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(774, 205);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 12);
+            this.label3.Size = new System.Drawing.Size(65, 12);
             this.label3.TabIndex = 10;
-            this.label3.Text = "最近评论时间：";
+            this.label3.Text = "热评条数：";
             // 
             // label5
             // 
@@ -185,14 +185,14 @@
             this.label7.TabIndex = 13;
             this.label7.Text = "前天评论条数：";
             // 
-            // lblNew
+            // lblHot
             // 
-            this.lblNew.AutoSize = true;
-            this.lblNew.Location = new System.Drawing.Point(870, 205);
-            this.lblNew.Name = "lblNew";
-            this.lblNew.Size = new System.Drawing.Size(41, 12);
-            this.lblNew.TabIndex = 14;
-            this.lblNew.Text = "label8";
+            this.lblHot.AutoSize = true;
+            this.lblHot.Location = new System.Drawing.Point(870, 205);
+            this.lblHot.Name = "lblHot";
+            this.lblHot.Size = new System.Drawing.Size(41, 12);
+            this.lblHot.TabIndex = 14;
+            this.lblHot.Text = "label8";
             // 
             // lblTod
             // 
@@ -229,7 +229,7 @@
             this.Controls.Add(this.lblBef);
             this.Controls.Add(this.lblYes);
             this.Controls.Add(this.lblTod);
-            this.Controls.Add(this.lblNew);
+            this.Controls.Add(this.lblHot);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -268,7 +268,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblNew;
+        private System.Windows.Forms.Label lblHot;
         private System.Windows.Forms.Label lblTod;
         private System.Windows.Forms.Label lblYes;
         private System.Windows.Forms.Label lblBef;
