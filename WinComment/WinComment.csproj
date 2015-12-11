@@ -67,6 +67,12 @@
     <Compile Include="FormQQ.Designer.cs">
       <DependentUpon>FormQQ.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormTotal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormTotal.Designer.cs">
+      <DependentUpon>FormTotal.cs</DependentUpon>
+    </Compile>
     <Compile Include="OperaTimeStamp.cs" />
     <Compile Include="FengHuang.cs">
       <SubType>Form</SubType>
@@ -115,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormSohu.resx">
       <DependentUpon>FormSohu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormTotal.resx">
+      <DependentUpon>FormTotal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
